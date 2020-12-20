@@ -14,6 +14,8 @@ int main(int argc, char **argv)
 	/*int bufsize = BUFFER_SIZE;*/
 	size_t len = 0;
 	size_t read;
+	stack_t **stack = NULL;
+	unsigned int linecount = 1;
 
 	if (argc != 2)
 	{
@@ -45,9 +47,9 @@ int main(int argc, char **argv)
 	{
 		token = strtok(NULL, " "); /*may need single quotes ' '*/
 	}
-	if (strcmp(line, "push") == 0)
+	if (strcmp(line, ops[i].opcode) == 0)
 	{
-		push.ops; /* was push(ops); but ops did not highlight*/
+		(ops[i].f(stack, linecount)); /* was push(ops); but ops did not highlight*/
 		free(line);
 	}
 	printf("%s", line);
@@ -63,7 +65,7 @@ int main(int argc, char **argv)
 * Return: str
 */
 
-int operations(char **str)
+int _getfunc(char **str)
 {
 	int i;
 	int (*f)(instruction_s);
