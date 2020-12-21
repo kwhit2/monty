@@ -1,4 +1,4 @@
-#include "monty.h"
+/*#include "monty.h" */
 
 /**
  * push - puts value on top of stack
@@ -36,7 +36,7 @@ void push(stack_t **stack, unsigned int line_number)
  * pop - removes the top element of the stack
  * Return: void
  */
-
+/*
 void pop(stack_t **stack, unsigned int line_number)
 {
     if (stack == NULL || *stack == NULL)
@@ -44,27 +44,27 @@ void pop(stack_t **stack, unsigned int line_number)
         printf("L%d: can't pop an empty stack\n", line_number);
         exit(EXIT_FAILURE);
     }
-    if ((*stack)->next != NULL) /* continue until end of stack */
-    {
-        *stack = (*stack)->next; /*set stack position to next node/element*/
-        global.data = (*stack)->n; /* set the data = to n */ 
-        free((*stack)->prev); /*free element/node that was on top position*/
-        (*stack)->prev = NULL; /* now that top is popped set it to NULL */
-    }
-    else /* the stack is empty to begin with */
-    {
+if ((*stack)->next != NULL)*/ /* continue until end of stack */
+	/*{
+	 *stack = (*stack)->next;*/ /*set stack position to next node/element*/
+        /*global.data = (*stack)->n; *//* set the data = to n */ 
+/* free((*stack)->prev); */ /*free element/node that was on top position*/
+/* (*stack)->prev = NULL;*/ /* now that top is popped set it to NULL */
+/*  }
+    else*/ /* the stack is empty to begin with */
+/*    {
         free(*stack);
         *stack = NULL;
     }
 }
-
+*/
 /**
  * pall - prints all the values on the stack, starting from
  * the top of the stack
  * Return: void
  */
 
-void pall(void)
+/*void pall(void)
 {
 	int top = -1;
 	int n = 0;
@@ -75,17 +75,17 @@ void pall(void)
 		fprintf(stderr, "%d", **stack);
 	}
 }
-
+*/
 /**
  * pint -  prints the value at the top of the stack, followed by a new line.
  * Return: void
  */
-
+/*
 int pint(void)
 {
-	int top = -1, element = 0, **stack = NULL;
+int top = -1, element = 0, **stack = NULL;*/
 /* if stack is full */
-	if (top == element - 1)
+/*	if (top == element - 1)
 	{
 		return (*stack[top]);
 	}
@@ -95,12 +95,12 @@ int pint(void)
 		exit(EXIT_FAILURE);
 	}
 }
-
+*/
 /**
  * swap - swap top two elements of the stack
  * Return: void
  */
-void swap(void)
+/*void swap(void)
 {
 	int top = -1, element = 0, **stack = NULL;
 	int x, y;
@@ -109,3 +109,4 @@ void swap(void)
 	x = y;
 	y = temp;
 }
+*/
