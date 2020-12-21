@@ -10,8 +10,6 @@ void add(void)
 
 }
 */
-<<<<<<< HEAD
-=======
 
 /**
  * pop - removes the top element of the stack
@@ -39,7 +37,6 @@ void pop(stack_t **stack, unsigned int line_number)
     }
 }
 
->>>>>>> kyle
 /**
  * nop - does nothing
  * Return: void
