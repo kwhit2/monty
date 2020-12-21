@@ -9,6 +9,16 @@
 #include <string.h>
 #include <stddef.h>
 #include <sys/types.h>
+#include <ctype.h>
+
+typedef struct glob
+{
+        int data;
+        char check;
+}global_t;
+
+extern global_t global;
+global_t global;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,13 +51,16 @@ typedef struct instruction_s
 } instruction_t;
 
 int main(int argc, char **argv);
-void pop(void);
+void pop(stack_t **stack, unsigned int line_number);
 void push(void);
 void pall(void);
 int pint(void);
 void swap(void);
 void add(void);
 void nop(stack_t **stack, unsigned int line_number);
-stack_t *_getfunc(char *str, stack_t **stack, unsigned int line_number);
+void _getfunc(char *str, stack_t **stack, unsigned int line_number);
+void free_things(stack_t **stack, unsigned int line_number);
+void tokenizer(char *line, stack_t **stack, unsigned int line_number);
+int digifier(char *tok);
 
 #endif
