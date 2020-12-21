@@ -47,7 +47,7 @@ void pall(void);
 int pint(void);
 void swap(void);
 void add(void);
-void nop(void);
-
+void nop(stack_t **stack, unsigned int line_number);
+stack_t *_getfunc(char *str, stack_t **stack, unsigned int line_number);
 
 #endif

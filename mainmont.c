@@ -1,4 +1,5 @@
 #include "monty.h"
+#define _DELIM " \t\r\n\a"
 
 /**
 * main - main monty function
@@ -14,7 +15,7 @@ int main(int argc, char **argv)
 	/*int bufsize = BUFFER_SIZE;*/
 	size_t len = 0;
 	size_t read;
-	stack_t **stack = NULL;
+	stack_t *stack = NULL;
 	unsigned int linecount = 1;
 
 	if (argc != 2)
@@ -41,18 +42,12 @@ int main(int argc, char **argv)
 		printf("Reading Error\n");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(line, "\n"); /*may need single quotes ' '*/
-	token = strtok(line, " "); /*may need single quotes ' '*/
-	while (token)
+	token = strtok(line, _DELIM);
+	while (token != NULL)
 	{
-		token = strtok(NULL, " "); /*may need single quotes ' '*/
+		token = strtok(NULL, _DELIM);
 	}
-	if (strcmp(line, ops[i].opcode) == 0)
-	{
-		(ops[i].f(stack, linecount)); /* was push(ops); but ops did not highlight*/
-		free(line);
-	}
-	printf("%s", line);
+	_getfunc(line, &stack, linecount);
 	free(line);
 	fclose(file);
 	exit(EXIT_SUCCESS);
@@ -60,29 +55,38 @@ int main(int argc, char **argv)
 }
 
 /**
-* operarations - contains a struct with operations
-* @str: string to be returned
+* _getfunc - contains a struct with operations
+* @str: string
+* @stack: stack from stack_t
+* @line_number: line number
 * Return: str
 */
 
-int _getfunc(char **str)
+stack_t *_getfunc(char *str, stack_t **stack, unsigned int line_number)
 {
 	int i;
-	int (*f)(instruction_s);
 
 	instruction_t ops[] = {
-		{"push", push},
+		/*{"push", push},*/
 		/*{"pall", pall},*/
 		/*{"pint", pint},*/
 		/*{"pop", pop},*/
 		/*{"swap", swap},*/
 		/*{"add", add},*/
-		/*{"nop", nop},*/
+		{"nop", nop},
 		{"\0", NULL}
 	};
-	while (ops[i].opcode)
+	for (i = 0; ops[i].opcode != NULL; i++)
 	{
-		f = ops[i].f;
+	if (*(ops[i]).opcode == *str)
+	{
+		(ops[i].f(stack, line_number));
+	}
+	if (!ops[i].opcode)
+	{
+		fprintf(stderr, "L<line_number>%d: unknown instruction <opcode>%s\n", line_number, str);
+		exit(EXIT_FAILURE);
+	}
 	}
 	return (0);
 }

@@ -1,3 +1,5 @@
+#include "monty.h"
+
 /**
  * add - adds the top two elements of the stack
  * Return: void
@@ -13,7 +15,7 @@ void add(void)
  * Return: void
  */
 
-void nop(void)
+void nop(stack_t **stack, unsigned int line_number)
 {
-return (0);
+printf("Please God\n");
 }
