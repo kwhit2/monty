@@ -4,8 +4,8 @@
  * push - puts value on top of stack
  * Return: void
  */
-
-void push(void)
+/*
+void push(stack_t **stack, unsigned int line_number)
 {
 	int element = 0;
 	int top = -1;
@@ -16,22 +16,22 @@ void push(void)
 		perror("L<line_number>: usage: push integer\n");
 		exit(EXIT_FAILURE);
 	}
-/* if stack is full */
+
 	if (top == element - 1)
 	{
 		fprintf(stderr, "STACK IS FULL!!");
 	}
-/* if stack is empty */
+
 	else
 	{
-/* incrementing top */
+
 		top = top + 1;
 		scanf("%d", &element);
-/* inserting element on incremented postition */
+
 		stack[top] = element;
 	}
 }
-
+*/
 /**
  * pop - removes the top element of the stack
  * Return: void
