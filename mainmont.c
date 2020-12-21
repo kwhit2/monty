@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	*}
 	*if ()
 	*/
-	while (getline(&line, &len, file) == -1)/*betty didn't like the if*/
+	while (getline(&line, &len, file) != -1)/*betty didn't like the if*/
 	{
 		if (*line != '\n')
 		{
@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 			tokenizer(token, &stack, linecount);
 		}
 		linecount++;
+		printf("%s\n", line);
 	}
 	fclose(file);
 	free(line);
@@ -65,7 +66,7 @@ void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 	int i;
 
 	instruction_t ops[] = {
-		/*{"push", push},*/
+		{"push", push},
 		/*{"pall", pall},*/
 		/*{"pint", pint},*/
 		{"pop", pop},

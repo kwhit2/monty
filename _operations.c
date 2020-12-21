@@ -13,6 +13,8 @@ void add(void)
 
 /**
  * pop - removes the top element of the stack
+ * @stack: double pointer to stack
+ * @line_number: line number
  * Return: void
  */
 
@@ -38,14 +40,47 @@ void pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * push - puts value on top of stack
+ * @stack: double pointer to stack
+ * @line_number: line number
+ * @new: new node
+ * Return: void
+ */
+
+void push(stack_t **stack, unsigned int line_number)
+{
+    stack_t *new;
+
+    if (stack == NULL)
+    {
+        printf("L%d: unknown stack\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+    new = malloc(sizeof(stack_t));
+    if (new == NULL)
+    {
+        printf("Error: Malloc Failed\n");
+        free_things(stack, line_number);
+        exit(EXIT_FAILURE);
+    }
+    new->n = global.data;
+    new->prev = NULL;
+    new->next = *stack;
+
+    if (*stack != NULL)
+        (*stack)->prev = new;
+    *stack = new;
+}
+
+/**
  * nop - does nothing
+ * @stack: double pointer to stack
+ * @line_number: line number
  * Return: void
  */
 
 void nop(stack_t **stack, unsigned int line_number)
 {
-(void)line_number;
-(void)stack;
 printf("Please God\n");
 (void)stack;
 (void)line_number;
