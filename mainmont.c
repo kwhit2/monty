@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	*}
 	*if ()
 	*/
-	while (read = getline(&line, &len, file) == -1)/*betty didn't like the if*/
+	while ((read = getline(&line, &len, file) == -1))/*betty didn't like the if*/
 	{
 		fprintf(stderr, "Error reading file\n");
 		printf("Reading Error\n");
