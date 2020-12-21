@@ -21,7 +21,7 @@ void tokenizer(char *line, stack_t **stack, unsigned int line_number)
 		if (!digifier(tok))
 		{
 			printf("L%d: usage: push integer\n", line_number);
-			free_things(stack, line_number); /*need a free_all func*/
+			free_things(stack, line_number);
 			exit(EXIT_FAILURE);
 		}
 		global.data = atoi(tok);
