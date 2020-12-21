@@ -35,11 +35,7 @@ int main(int argc, char **argv)
 	*}
 	*if ()
 	*/
-<<<<<<< HEAD
-	while ((read = getline(&line, &len, file) == -1))/*betty didn't like the if*/
-=======
 	while (getline(&line, &len, file) == -1)/*betty didn't like the if*/
->>>>>>> kyle
 	{
 		if (*line != '\n')
 		{
