@@ -11,11 +11,16 @@
 #include <sys/types.h>
 #include <ctype.h>
 
+/**
+ * struct glob - global variable struct
+ * @data: data
+ * Description: Global variable data
+ */
+
 typedef struct glob
 {
-        int data;
-        char check;
-}global_t;
+	int data;
+} global_t;
 
 extern global_t global;
 global_t global;
@@ -31,9 +36,9 @@ global_t global;
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -46,14 +51,14 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 int main(int argc, char **argv);
 void pop(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
-void pall(void);
+void pall(stack_t **stack, unsigned int line_number);
 int pint(void);
 void swap(void);
 void add(void);

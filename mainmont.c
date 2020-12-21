@@ -28,13 +28,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	/**
-	*if (file == -1 || file == '\n')
-	*{
-	*fprintf("L<line_number>%d: unknown instruction <opcode>%s\n", line_number, argv[0])
-	*}
-	*if ()
-	*/
+
 	while (getline(&line, &len, file) != -1)/*betty didn't like the if*/
 	{
 		if (*line != '\n')
@@ -44,7 +38,7 @@ int main(int argc, char **argv)
 			tokenizer(token, &stack, linecount);
 		}
 		linecount++;
-		printf("%s\n", line);
+		/*printf("%s\n", line);*/
 	}
 	fclose(file);
 	free(line);
@@ -67,7 +61,7 @@ void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 
 	instruction_t ops[] = {
 		{"push", push},
-		/*{"pall", pall},*/
+		{"pall", pall},
 		/*{"pint", pint},*/
 		{"pop", pop},
 		/*{"swap", swap},*/
@@ -83,7 +77,7 @@ void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 		return;
 	}
 	}
-		fprintf(stderr, "L<line_number>%d: unknown instruction <opcode>%s\n", line_number, str);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, str);
 		free_things(stack, line_number);
 		exit(EXIT_FAILURE);
 }
