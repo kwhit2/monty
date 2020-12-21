@@ -14,7 +14,6 @@ int main(int argc, char **argv)
 	char *line = NULL, *token;
 	/*int bufsize = BUFFER_SIZE;*/
 	size_t len = 0;
-	size_t read;
 	stack_t *stack = NULL;
 	unsigned int linecount = 1;
 
@@ -36,22 +35,21 @@ int main(int argc, char **argv)
 	*}
 	*if ()
 	*/
-	while (read = getline(&line, &len, file) == -1)/*betty didn't like the if*/
+	while (getline(&line, &len, file) == -1)/*betty didn't like the if*/
 	{
-		fprintf(stderr, "Error reading file\n");
-		printf("Reading Error\n");
-		exit(EXIT_FAILURE);
+		if (*line != '\n')
+		{
+			token = strtok(line, "\n");
+			printf("%s\n", token);
+			tokenizer(token, &stack, linecount);
+		}
+		linecount++;
 	}
-	token = strtok(line, _DELIM);
-	while (token != NULL)
-	{
-		token = strtok(NULL, _DELIM);
-	}
-	_getfunc(line, &stack, linecount);
-	free(line);
 	fclose(file);
-	exit(EXIT_SUCCESS);
-	return (0);
+	free(line);
+	if (stack != NULL)
+	free_things(&stack, linecount);
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -62,7 +60,7 @@ int main(int argc, char **argv)
 * Return: str
 */
 
-stack_t *_getfunc(char *str, stack_t **stack, unsigned int line_number)
+void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 {
 	int i;
 
@@ -70,7 +68,7 @@ stack_t *_getfunc(char *str, stack_t **stack, unsigned int line_number)
 		/*{"push", push},*/
 		/*{"pall", pall},*/
 		/*{"pint", pint},*/
-		/*{"pop", pop},*/
+		{"pop", pop},
 		/*{"swap", swap},*/
 		/*{"add", add},*/
 		{"nop", nop},
@@ -78,15 +76,13 @@ stack_t *_getfunc(char *str, stack_t **stack, unsigned int line_number)
 	};
 	for (i = 0; ops[i].opcode != NULL; i++)
 	{
-	if (*(ops[i]).opcode == *str)
+	if (strcmp(str, ops[i].opcode) == 0)
 	{
-		(ops[i].f(stack, line_number));
+		ops[i].f(stack, line_number);
+		return;
 	}
-	if (!ops[i].opcode)
-	{
+	}
 		fprintf(stderr, "L<line_number>%d: unknown instruction <opcode>%s\n", line_number, str);
+		free_things(stack, line_number);
 		exit(EXIT_FAILURE);
-	}
-	}
-	return (0);
 }

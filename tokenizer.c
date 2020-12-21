@@ -1,46 +1,54 @@
 #include "monty.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+
 /**
- * parse_line - tokenizing each line that is read
+ * tokenizer - tokenizing arguments
  * @str: line
  * Return: number of tokens which is count
  */
-int parse_line(char *str)
+
+void tokenizer(char *line, stack_t **stack, unsigned int line_number)
 {
-	int bufsize = BUFFER_SIZE, count = 0;
-/* allocating buffer size for amount of tokens */
-	char *tokens[1024];
-	char *token;
-/* declaring the space as a delimiter */
-	const char *delim = " ";
-/* declaring a pointer to the first token */
-	token = strtok(str, delim);
-	if (!token)
-		return (-1);
-	if (strcmp((token + 1), " "))
+	char *tok;
+	char *toks;
+
+	tok = strtok(line, " "); /*ex: tok = push*/
+	if (*tok == ' ' || *tok == '\n' || tok == NULL)
+	return;
+	if (strcmp(tok, "push") == 0)
 	{
-		token++;
-		if (strcmp(token, " "))
+		toks = tok;
+		tok = strtok(NULL, " ");
+		if (!digifier(tok))
 		{
-			printf("%s\n", token);
+			printf("L%d: usage: push integer\n", line_number);
+			free_things(stack, line_number); /*need a free_all func*/
+			exit(EXIT_FAILURE);
 		}
+		global.data = atoi(tok);
+		_getfunc(toks, stack, line_number);
 	}
-/* walk through other tokens */
-	while (token != NULL)
+	else
+	_getfunc(tok, stack, line_number);
+}
+
+/**
+ * digifier - checking it tok is a digit
+ * @tok: tokenizer item to be determined if it is a digit
+ * Return: true or false
+ */
+
+int digifier(char *tok)
+{
+	if (tok == NULL)
+	return (0);
+	if (*tok == '-') /* if a negative number increment once */
+	tok++;
+	while (*tok != '\0') /* getting entire number ex: push 755 vs push 3 */
 	{
-/* token is equal to the count of tokens */
-		tokens[count++] = token;
-/* if buffer size is reached, function has failed */
-		if (count == bufsize)
-			return (-1);
-/* token is equal to the last token which is NULL */
-		token = strtok(NULL, delim);
+		if (!isdigit(*tok))
+			return (0); /* if not a number return false */
+		tok++; /* increment through input to check if digit */
 	}
-/* return number of tokens */
-/*	printf("%s\n", tokens[count - 1]);*/
-	printf("%s\n", tokens[count - 1]);
-	tokens[count] = NULL;
-	return (count);
+	tok++; /* increment through while loop if is digit */
+	return (1); /* for true if is digit */
 }

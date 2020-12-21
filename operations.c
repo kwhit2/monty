@@ -37,20 +37,25 @@ void push(void)
  * Return: void
  */
 
-void pop(void)
+void pop(stack_t **stack, unsigned int line_number)
 {
-	int top = -1;
-	int **stack = NULL;
-/* empty stack */
-	if (top == -1)
-	{
-		return;
-	}
-	else
-	{
-		fprint(stderr, "%d", *stack[top]);
-		top = top - 1; /*decrementing tops position will detach last element*/
-	}
+    if (stack == NULL || *stack == NULL)
+    {
+        printf("L%d: can't pop an empty stack\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+    if ((*stack)->next != NULL) /* continue until end of stack */
+    {
+        *stack = (*stack)->next; /*set stack position to next node/element*/
+        global.data = (*stack)->n; /* set the data = to n */ 
+        free((*stack)->prev); /*free element/node that was on top position*/
+        (*stack)->prev = NULL; /* now that top is popped set it to NULL */
+    }
+    else /* the stack is empty to begin with */
+    {
+        free(*stack);
+        *stack = NULL;
+    }
 }
 
 /**
