@@ -62,7 +62,7 @@ void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
-		/*{"pint", pint},*/
+		{"pint", pint},
 		{"pop", pop},
 		/*{"swap", swap},*/
 		/*{"add", add},*/
