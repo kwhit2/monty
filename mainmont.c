@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&line, &len, file) != -1)/*betty didn't like the if*/
+	while (getline(&line, &len, file) != -1)
 	{
 		if (*line != '\n')
 		{
