@@ -1,6 +1,6 @@
-README.md for 0x19. C - Stacks, Queues - LIFO, FIFO "monty"\
+README.md for 0x19. C - Stacks, Queues - LIFO, FIFO "monty"
 
-Monty Language Interpreter\
+Monty Language Interpreter
 
 In this project the general information we will cover is as follows:\
 -What do LIFO and FIFO mean\
