@@ -2,7 +2,9 @@
 
 /**
  * tokenizer - tokenizing arguments
- * @str: line
+ * @line: line
+ * @stack: double pointer
+ * @line_number: unsigned int
  * Return: number of tokens which is count
  */
 
