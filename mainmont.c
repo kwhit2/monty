@@ -33,7 +33,6 @@ int main(int argc, char **argv)
 		if (*line != '\n')
 		{
 			token = strtok(line, "\n");
-/*			printf("%s\n", token); */
 			tokenizer(token, &stack, linecount);
 		}
 		linecount++;
