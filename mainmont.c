@@ -36,7 +36,6 @@ int main(int argc, char **argv)
 			tokenizer(token, &stack, linecount);
 		}
 		linecount++;
-		/*printf("%s\n", line);*/
 	}
 	fclose(file);
 	free(line);
