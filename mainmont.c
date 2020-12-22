@@ -12,7 +12,6 @@ int main(int argc, char **argv)
 {
 	FILE *file;
 	char *line = NULL, *token;
-	/*int bufsize = BUFFER_SIZE;*/
 	size_t len = 0;
 	stack_t *stack = NULL;
 	unsigned int linecount = 1;
