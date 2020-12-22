@@ -22,19 +22,23 @@ Installation:\
 -Example = ./monty ./bytecodes/001.m\
 
 Opcode Functions:\
-void pop(void); = removes the top element of the stack\
-void push(void); = pushes an element onto the stack\
-void pall(void); = prints all the values on the stack, starting from the top/
-int pint(void); = prints the value at the top of the stack\
-void swap(void); = swap the top two elements of the stack\
-void add(void); = adds the top two elements of the stack\
-void nop(void); = does nothing\
+void pop(stack_t **stack, unsigned int line_number); = removes the top element of the stack\
+void push(stack_t **stack, unsigned int line_number); = pushes an element onto the stack\
+void pall(stack_t **stack, unsigned int line_number); = prints all the values on the stack, starting from the top/
+void pint(stack_t **stack, unsigned int line_number); = prints the value at the top of the stack\
+void swap(stack_t **stack, unsigned int line_number); = swap the top two elements of the stack\
+void add(stack_t **stack, unsigned int line_number); = adds the top two elements of the stack\
+void nop(stack_t **stack, unsigned int line_number); = does nothing\
+void _getfunc(char *str, stack_t **stack, unsigned int line_number) = Opcode Struct\
+void free_things(stack_t **stack, unsigned int line_number); = Frees things\
+void tokenizer(char *line, stack_t **stack, unsigned int line_number); = Tokenizer\
+int digifier(char *tok); = Check if digit\
 
 Other Files/Functions:\
 monty.h = Header File\
 mainmont.c = Main File\
-operations.c = Contains Opcode functions\
 _operations.c = Contains Opcode functions\
 tokenizer.c = Tokenizer\
-
+free_things.c = Frees things with reference to pop\
+more_ops.c = More Opcode functions
 Authors: Lauren Dobratz and Kyle Whitten
