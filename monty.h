@@ -61,7 +61,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(void);
-void add(void);
+void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void _getfunc(char *str, stack_t **stack, unsigned int line_number);
 void free_things(stack_t **stack, unsigned int line_number);

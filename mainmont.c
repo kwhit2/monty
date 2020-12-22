@@ -65,7 +65,7 @@ void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 		{"pint", pint},
 		{"pop", pop},
 		/*{"swap", swap},*/
-		/*{"add", add},*/
+		{"add", add},
 		{"nop", nop},
 		{"\0", NULL}
 	};
