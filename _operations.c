@@ -73,7 +73,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL)
 	{
-		printf("L%d: unkown stack\n", line_number);
+		printf("L%d: unknown stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printstack = *stack;
