@@ -16,7 +16,7 @@ void tokenizer(char *line, stack_t **stack, unsigned int line_number)
 	tok = strtok(line, " "); /*ex: tok = push*/
 	if (*tok == ' ' || *tok == '\n' || tok == NULL || *tok == '#')
 	return;
-	if (strcmp(tok, "push") == 0)
+	if (strcmp(tok, "push") == 0) /* if true if it is 'push' */
 	{
 		toks = tok;
 		tok = strtok(NULL, " ");

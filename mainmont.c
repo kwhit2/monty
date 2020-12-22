@@ -16,12 +16,12 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	unsigned int linecount = 1;
 
-	if (argc != 2)
+	if (argc != 2) /* if not 2 arg then error */
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
+	file = fopen(argv[1], "r"); /* open file and read argv[1] */
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -68,9 +68,9 @@ void _getfunc(char *str, stack_t **stack, unsigned int line_number)
 	};
 	for (i = 0; ops[i].opcode != NULL; i++)
 	{
-	if (strcmp(str, ops[i].opcode) == 0)
+	if (strcmp(str, ops[i].opcode) == 0) /* if input from tokenizer matches */
 	{
-		ops[i].f(stack, line_number);
+		ops[i].f(stack, line_number); /* then run that function */
 		return;
 	}
 	}
