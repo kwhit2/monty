@@ -99,8 +99,7 @@ void nop(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL)
 	{
-		return;
-		exit(EXIT_FAILURE);
+		;
 	}
 }
 
