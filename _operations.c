@@ -97,9 +97,7 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 
-	if (stack == 0)
-		;
-	else if (!stack)
+	while (stack == 0)
 		;
 }
 
